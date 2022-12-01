@@ -126,7 +126,10 @@ li {
 =================================*/
 
 
-.box li { border-bottom: 1px solid #999; }
+.box li { 
+  border-bottom: 1px solid #999;
+  display: none;
+}
 
 .button {
   padding: 5px;
