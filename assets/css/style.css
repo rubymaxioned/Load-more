@@ -126,7 +126,7 @@ li {
 =================================*/
 
 
-.container li { border-bottom: 1px solid #999; }
+.box li { border-bottom: 1px solid #999; }
 
 .button {
   padding: 5px;
@@ -136,7 +136,8 @@ li {
   text-transform: capitalize;
 }
 
-.active { display: block; }
+.box li.active { display: block; }
+button.hide { display: none; }
 
 
 /*=================================
