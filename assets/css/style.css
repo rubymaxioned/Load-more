@@ -137,7 +137,6 @@ h2 {
   font-size: 18px;
 }
 
-ul { text-indent: -9999px; }
 .first { border-bottom: 1px solid; }
 .active { display: block; }
 .hide { display: none; }
