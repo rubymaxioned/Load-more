@@ -124,13 +124,6 @@ li {
 /*=================================
   main styling starts here
 =================================*/
-
-
-.box li { 
-  border-bottom: 1px solid #999;
-  display: none;
-}
-
 .button {
   padding: 5px;
   border: 1px solid;
@@ -139,10 +132,8 @@ li {
   text-transform: capitalize;
 }
 
-.box li.active { display: block; }
-button.hide { display: none; }
-
-
+.active { display: block; }
+.hide { display: none; }
 /*=================================
   main styling ends here
 =================================*/
