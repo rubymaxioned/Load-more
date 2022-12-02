@@ -1,46 +1,61 @@
 // var box = document.querySelector(".box");
 // var boxList = document.querySelectorAll(".box li");
-// var loadBtn = document.querySelector(".button");
-// var counter = 0;
-// var n = 6;
-// var len = boxList.length;
-// console.log(len);
+var products = document.querySelector('.products');
+var loadBtn = document.querySelector(".button");
+var counter = 0;
+var n = 6;
+var length = '';
+let firstEle;
+var val = '';
 
-// function loadMoreFunction(initial, last) {
-// n = n < len ? n : len;   
-// for (var i = counter; i < n; i++) {
-//     if (i === len - 2) {
-//         loadBtn.classList.add('hide');
-//     }
-//     boxList[i].classList.add('active');
-
-// }
-// }
-// loadMoreFunction(counter, n);
-
-// loadBtn.addEventListener('click',function(){
-//                 counter = counter + 6;
-//                 n += 6;
-//                 loadMoreFunction(counter, n);
-// })
-
-
-let http = new XMLHttpRequest();
+var http = new XMLHttpRequest();
 http.open('get','https://jsonplaceholder.typicode.com/posts',true);
 http.send();
 http.onload = function(){
     if(this.readyState == 4 && this.status == 200) {
         let products = JSON.parse(this.responseText);
         let output = ""; 
-
+        var len = products.length;
+        
         for(let item of products){
             output += `
-            <div class="products">
-            <p class="title">${item.title}</p>
+            <li class="first">
+            <h2 class="title">${item.title}</h2>
             <p class="description">${item.body}</p>
-            </div>
+            </li>
             `;
         }
         document.querySelector('.products').innerHTML = output;
+        var first = document.querySelectorAll('.first');
     }
+    length = len;
+    firstEle = first;
+    console.log(len);
+    for(i=0; i<len; i++){
+        first[i].classList.add('hide');
+    }
+    loadMoreFunction(counter,n,len,firstEle);
+}
+
+loadBtn.addEventListener('click',function(){
+    // console.log('CHECK', firstEle);
+    counter = counter + 6;
+    n += 6;
+    loadMoreFunction(counter,n,length,firstEle);
+})
+
+// loadMoreFunction(counter, n);
+
+
+function loadMoreFunction(initial, last,len,first) {
+    last = last < len ? last : len;   
+for (var i = initial; i < last; i++) {
+    // console.log(len);
+    if (i === len - 4) {
+        first[i].classList.add('hide');
+        loadBtn.classList.add('hide');
+    } 
+    first[i].classList.remove('hide');
+    first[i].classList.add('active');
+}
 }

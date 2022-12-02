@@ -139,8 +139,8 @@ li {
   text-transform: capitalize;
 }
 
-.box li.active { display: block; }
-button.hide { display: none; }
+.active { display: block; }
+.hide { display: none; }
 
 
 /*=================================
