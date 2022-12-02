@@ -30,6 +30,17 @@ http.open('get','https://jsonplaceholder.typicode.com/posts',true);
 http.send();
 http.onload = function(){
     if(this.readyState == 4 && this.status == 200) {
-        let loremContainer = 
+        let products = JSON.parse(this.responseText);
+        let output = ""; 
+
+        for(let item of products){
+            output += `
+            <div class="products">
+            <p class="title">${item.title}</p>
+            <p class="description">${item.body}</p>
+            </div>
+            `;
+        }
+        document.querySelector('.products').innerHTML = output;
     }
 }
