@@ -1,5 +1,3 @@
-// var box = document.querySelector(".box");
-// var boxList = document.querySelectorAll(".box li");
 var products = document.querySelector('.products');
 var loadBtn = document.querySelector(".button");
 var counter = 0;
@@ -38,19 +36,14 @@ http.onload = function(){
 }
 
 loadBtn.addEventListener('click',function(){
-    // console.log('CHECK', firstEle);
     counter = counter + 6;
     n += 6;
     loadMoreFunction(counter,n,length,firstEle);
 })
 
-// loadMoreFunction(counter, n);
-
-
 function loadMoreFunction(initial, last,len,first) {
     last = last < len ? last : len;   
-for (var i = initial; i < last; i++) {
-    // console.log(len);
+    for (var i = initial; i < last; i++) {
     if (i === len - 4) {
         first[i].classList.add('hide');
         loadBtn.classList.add('hide');
