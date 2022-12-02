@@ -132,6 +132,12 @@ li {
   text-transform: capitalize;
 }
 
+h2 { 
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.first { border-bottom: 1px solid; }
 .active { display: block; }
 .hide { display: none; }
 /*=================================
