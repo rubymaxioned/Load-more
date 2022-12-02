@@ -124,13 +124,6 @@ li {
 /*=================================
   main styling starts here
 =================================*/
-
-
-.box li { 
-  border-bottom: 1px solid #999;
-  display: none;
-}
-
 .button {
   padding: 5px;
   border: 1px solid;
@@ -141,8 +134,6 @@ li {
 
 .active { display: block; }
 .hide { display: none; }
-
-
 /*=================================
   main styling ends here
 =================================*/
