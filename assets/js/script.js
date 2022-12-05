@@ -36,25 +36,25 @@ var products = document.querySelector('.products'),
     })
 
     loadBtn.addEventListener('click',function(){
-            counter = counter + 6;
-            n += 6;
-            loadMoreFunction(counter,n,length,firstEle);
-        })
+        counter = counter + 6;
+        n += 6;
+        loadMoreFunction(counter,n,length,firstEle);
+    })
             
-        function loadMoreFunction(initial, last,len,first) {
-            last = last < len ? last : len;   
+    function loadMoreFunction(initial, last,len,first) {
+        last = last < len ? last : len;   
+    
+        for (var i = initial; i < last; i++) {
+        if (i === len - 4) {
+            first[i].classList.add('hide');
+            loadBtn.classList.add('hide');
+        } 
+    
+        first[i].classList.remove('hide');
+        first[i].classList.add('active');
+    }
         
-            for (var i = initial; i < last; i++) {
-            if (i === len - 4) {
-                first[i].classList.add('hide');
-                loadBtn.classList.add('hide');
-            } 
-        
-            first[i].classList.remove('hide');
-            first[i].classList.add('active');
-        }
-        
-        }
+    }
     
 
 // getText("https://jsonplaceholder.typicode.com/posts");
