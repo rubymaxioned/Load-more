@@ -6,57 +6,134 @@ var products = document.querySelector('.products'),
     firstEle,
     val = '';
 
+    myFunction();
+
+    function myFunction() {
     var p = fetch("https://jsonplaceholder.typicode.com/posts");
     p.then(function(response) {
         return response.json();
     }).then(function(value){
-        var products = value;
+        products = value.slice(counter,n);
         console.log(products);
+        console.log(counter,n);
         output = "",
         len = products.length;
-          
-    for(let item of products){
-        output += `
-        <li class="first">
-        <h2 class="title">${item.title}</h2>
-        <p class="description">${item.body}</p>
-        </li>
-        `;  
-    }
-    document.querySelector('.products').innerHTML = output;
-    var first = document.querySelectorAll('.first');
+        console.log(len);
+        
+        for(let item of products){
+            output += `
+            <li class="first">
+            <h2 class="title">${item.title}</h2>
+            <p class="description">${item.body}</p>
+            </li>
+            `;  
+        }
+        var a = document.querySelector('.products');
+        a.innerHTML = output;
+    // var first = document.querySelectorAll('.first');
 
-    length = len;
-    firstEle = first;
+    // length = len;
+    // firstEle = first;
 
-    for(i=0; i<len; i++){
-        first[i].classList.add('hide');
-    }
-    loadMoreFunction(counter,n,len,firstEle);
-    })
+    // for(i=0; i<len; i++){
+    //     first[i].classList.add('hide');
+    // }
 
     loadBtn.addEventListener('click',function(){
-        counter = counter + 6;
-        n += 6;
-        loadMoreFunction(counter,n,length,firstEle);
+            counter += 6;
+            n += 6;
+            console.log("after");
+            console.log(counter);
+            console.log(n);
+            // loadMoreFunction(counter,n,length,firstEle);
+            myFunction(counter,n);
+        })
+        // console.log(counter);
     })
-            
-    function loadMoreFunction(initial, last,len,first) {
-        last = last < len ? last : len;   
-    
-        for (var i = initial; i < last; i++) {
-        if (i === len - 4) {
-            first[i].classList.add('hide');
-            loadBtn.classList.add('hide');
-        } 
-    
-        first[i].classList.remove('hide');
-        first[i].classList.add('active');
-    }
-        
-    }
-    
 
+    // function loadMoreFunction(initial,last) {
+    //     last = last < len ? last : len;   
+    
+    //     for (var i = initial; i < last; i++) {
+    //     if (i === len - 4) {
+    //         first[i].classList.add('hide');
+    //         // loadBtn.classList.add('hide');
+    //     } 
+    
+    //     // first[i].classList.remove('hide');
+    //     // first[i].classList.add('active');
+    // }   
+    // }
+}
+    // loadBtn.addEventListener('click',function(){
+    //     counter = counter + 6;
+    //     n += 6;
+    //     loadMoreFunction(counter,n,length,firstEle);
+    // })
+            
+
+
+//using fetch method
+// var products = document.querySelector('.products'),
+//     loadBtn = document.querySelector(".button"),
+//     counter = 0,
+//     n = 6,
+//     length = '',
+//     firstEle,
+//     val = '';
+
+//     var p = fetch("https://jsonplaceholder.typicode.com/posts");
+//     p.then(function(response) {
+//         return response.json();
+//     }).then(function(value){
+//         products = value;
+//         console.log(products);
+//         output = "",
+//         len = products.length;
+          
+//     for(let item of products){
+//         output += `
+//         <li class="first">
+//         <h2 class="title">${item.title}</h2>
+//         <p class="description">${item.body}</p>
+//         </li>
+//         `;  
+//     }
+//     document.querySelector('.products').innerHTML = output;
+//     var first = document.querySelectorAll('.first');
+
+//     length = len;
+//     firstEle = first;
+
+//     for(i=0; i<len; i++){
+//         first[i].classList.add('hide');
+//     }
+//     loadMoreFunction(counter,n,len,firstEle);
+//     })
+
+//     loadBtn.addEventListener('click',function(){
+//         counter = counter + 6;
+//         n += 6;
+//         loadMoreFunction(counter,n,length,firstEle);
+//     })
+            
+//     function loadMoreFunction(initial, last,len,first) {
+//         last = last < len ? last : len;   
+    
+//         for (var i = initial; i < last; i++) {
+//         if (i === len - 4) {
+//             first[i].classList.add('hide');
+//             loadBtn.classList.add('hide');
+//         } 
+    
+//         first[i].classList.remove('hide');
+//         first[i].classList.add('active');
+//     }   
+//     }
+
+
+    
+//using fetch
 // getText("https://jsonplaceholder.typicode.com/posts");
 
 // async function getText(file) {
