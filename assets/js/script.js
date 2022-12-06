@@ -2,7 +2,8 @@ var products = document.querySelector('.products'),
     loadBtn = document.querySelector(".button"),
     counter = 0,
     n = 6,
-    output = "";
+    output = "",
+    l = 0;
 
     myFunction(counter,n);
 
@@ -13,10 +14,9 @@ var products = document.querySelector('.products'),
     }).then(function(value){
         products = value.slice(counter,n);
         result = "";
-        console.log("before");
+        l += products.length;
         console.log(counter,n);
-        // console.log(output);
-        
+
         for(let item of products){
             output += `
             <li class="first">
@@ -27,57 +27,21 @@ var products = document.querySelector('.products'),
         }
         var a = document.querySelector('.products');
         len = output.length;
-        // console.log(len);
         a.innerHTML = output;
     })
 }
 
 loadBtn.addEventListener('click',function(){
-    n = n < 100 ? n : 100;   
     counter += 6;
     n += 6;
-    console.log("after");
-    console.log(counter,n);
-    // console.log(n);
-    // loadMoreFunction(counter,n,length,firstEle);
-    myFunction(counter,n);
     
-    if(n==96){
-    counter += 6;
-    n += 6;
-    myFunction(counter,n);
+    if(n>100){
+    n = 100;
     loadBtn.classList.add('hide');
     }
+    
+    myFunction(counter,n);
 })
-    // function loadMoreFunction(initial,last) {
-    //     last = last < len ? last : len;   
-    
-    //     for (var i = initial; i < last; i++) {
-    //     if (i === len - 4) {
-    //         first[i].classList.add('hide');
-    //         // loadBtn.classList.add('hide');
-    //     } 
-    
-        // first[i].classList.remove('hide');
-    //     // first[i].classList.add('active');
-    // }   
-    // }
-// }
-    // loadBtn.addEventListener('click',function(){
-    //     counter = counter + 6;
-    //     n += 6;
-    //     loadMoreFunction(counter,n,length,firstEle);
-    // })
-
-// var first = document.querySelectorAll('.first');
-
-    // length = len;
-    // firstEle = first;
-
-    // for(i=0; i<len; i++){
-    //     first[i].classList.add('hide');
-    // }
-
 
 //using fetch method
 // var products = document.querySelector('.products'),
