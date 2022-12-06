@@ -2,8 +2,7 @@ var products = document.querySelector('.products'),
     loadBtn = document.querySelector(".button"),
     counter = 0,
     n = 6,
-    output = "",
-    l = 0;
+    output = "";
 
     myFunction(counter,n);
 
@@ -14,7 +13,7 @@ var products = document.querySelector('.products'),
     }).then(function(value){
         products = value.slice(counter,n);
         result = "";
-        l += products.length;
+        l = value.length;
 
         for(let item of products){
             output += `
@@ -25,7 +24,6 @@ var products = document.querySelector('.products'),
             `;  
         }
         var a = document.querySelector('.products');
-        len = output.length;
         a.innerHTML = output;
     })
 }
