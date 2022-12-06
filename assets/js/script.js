@@ -2,23 +2,20 @@ var products = document.querySelector('.products'),
     loadBtn = document.querySelector(".button"),
     counter = 0,
     n = 6,
-    length = '',
-    firstEle,
-    val = '';
+    output = "";
 
-    myFunction();
+    myFunction(counter,n);
 
-    function myFunction() {
+    function myFunction(counter,n) {
     var p = fetch("https://jsonplaceholder.typicode.com/posts");
     p.then(function(response) {
         return response.json();
     }).then(function(value){
         products = value.slice(counter,n);
-        console.log(products);
+        result = "";
+        console.log("before");
         console.log(counter,n);
-        output = "",
-        len = products.length;
-        console.log(len);
+        // console.log(output);
         
         for(let item of products){
             output += `
@@ -29,28 +26,29 @@ var products = document.querySelector('.products'),
             `;  
         }
         var a = document.querySelector('.products');
+        len = output.length;
+        // console.log(len);
         a.innerHTML = output;
-    // var first = document.querySelectorAll('.first');
-
-    // length = len;
-    // firstEle = first;
-
-    // for(i=0; i<len; i++){
-    //     first[i].classList.add('hide');
-    // }
-
-    loadBtn.addEventListener('click',function(){
-            counter += 6;
-            n += 6;
-            console.log("after");
-            console.log(counter);
-            console.log(n);
-            // loadMoreFunction(counter,n,length,firstEle);
-            myFunction(counter,n);
-        })
-        // console.log(counter);
     })
+}
 
+loadBtn.addEventListener('click',function(){
+    n = n < 100 ? n : 100;   
+    counter += 6;
+    n += 6;
+    console.log("after");
+    console.log(counter,n);
+    // console.log(n);
+    // loadMoreFunction(counter,n,length,firstEle);
+    myFunction(counter,n);
+    
+    if(n==96){
+    counter += 6;
+    n += 6;
+    myFunction(counter,n);
+    loadBtn.classList.add('hide');
+    }
+})
     // function loadMoreFunction(initial,last) {
     //     last = last < len ? last : len;   
     
@@ -60,16 +58,84 @@ var products = document.querySelector('.products'),
     //         // loadBtn.classList.add('hide');
     //     } 
     
-    //     // first[i].classList.remove('hide');
+        // first[i].classList.remove('hide');
     //     // first[i].classList.add('active');
     // }   
     // }
-}
+// }
     // loadBtn.addEventListener('click',function(){
     //     counter = counter + 6;
     //     n += 6;
     //     loadMoreFunction(counter,n,length,firstEle);
     // })
+
+// var first = document.querySelectorAll('.first');
+
+    // length = len;
+    // firstEle = first;
+
+    // for(i=0; i<len; i++){
+    //     first[i].classList.add('hide');
+    // }
+
+
+//using fetch method
+// var products = document.querySelector('.products'),
+//     loadBtn = document.querySelector(".button"),
+//     counter = 0,
+//     n = 6,
+//     length = '',
+//     firstEle,
+//     val = '';
+
+//     var p = fetch("https://jsonplaceholder.typicode.com/posts");
+//     p.then(function(response) {
+//         return response.json();
+//     }).then(function(value){
+//         products = value;
+//         console.log(products);
+//         output = "",
+//         len = products.length;
+          
+//     for(let item of products){
+//         output += `
+//         <li class="first">
+//         <h2 class="title">${item.title}</h2>
+//         <p class="description">${item.body}</p>
+//         </li>
+//         `;  
+//     }
+//     document.querySelector('.products').innerHTML = output;
+//     var first = document.querySelectorAll('.first');
+
+//     length = len;
+//     firstEle = first;
+
+//     for(i=0; i<len; i++){
+//         first[i].classList.add('hide');
+//     }
+//     loadMoreFunction(counter,n,len,firstEle);
+//     })
+
+//     loadBtn.addEventListener('click',function(){
+//         counter = counter + 6;
+//         n += 6;
+//         loadMoreFunction(counter,n,length,firstEle);
+//     })
+            
+//     function loadMoreFunction(initial, last,len,first) {
+//         last = last < len ? last : len;   
+    
+//         for (var i = initial; i < last; i++) {
+//         if (i === len - 4) {
+//             first[i].classList.add('hide');
+//             loadBtn.classList.add('hide');
+//         } 
+    
+//         first[i].classList.remove('hide');
+//         first[i].classList.add('active');
+//     }   
+//     }
 
 
 //using async
