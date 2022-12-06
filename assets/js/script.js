@@ -25,7 +25,6 @@ var products = document.querySelector('.products'),
             `;  
         }
         var a = document.querySelector('.products');
-        len = output.length;
         a.innerHTML = output;
     })
 }
