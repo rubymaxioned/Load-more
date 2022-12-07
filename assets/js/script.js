@@ -99,7 +99,7 @@ loadBtn.addEventListener('click',function(){
 //     }
 
 
-//using async
+// /using async
 // var products = document.querySelector('.products'),
 //     loadBtn = document.querySelector(".button"),
 //     counter = 0,
